@@ -1,0 +1,24 @@
+Types: by time (counting operatons), by space
+
+Types of 0:
+- O(1)
+- O(log n)
+- O(n)
+- O(n*n)
+- O(n*n*n ...)
+
+By time:
+- operations amount does not depend on n - O(1)
+- yes depends (single loop example) - O(n)
+- double loop - O(n*n)
+...
+
+By space:
+- most primitives - O(1)
+- strings - O(n)
+- reference types (object, array) - O(n)
+
+Simplify!
+O(5) = O(1)
+O(6n) = O(n)
+O(7n*n+999n) = O(n*n)
