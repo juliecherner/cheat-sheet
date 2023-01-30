@@ -22,3 +22,23 @@ Simplify!
 O(5) = O(1)
 O(6n) = O(n)
 O(7n*n+999n) = O(n*n)
+
+Objects and runtime complexity
+
+Actions on an object and runtime complexity:
+- Insertion, removal, access - 0(1)
+- Search - 0(n)
+Methods:
+- keys, values, entries - 0(n)
+- hasOwnProperty - 0(1)
+
+On an array:
+- Insertion/removal - in the beginning of the array o(n), end - o(n)
+- Search - 0(n)
+- Access - 0(1)
+
+Array methods:
+-push, pop o(1)
+-shift, unshift,nconcat, slice, splice - o(n)
+-forEach/map/filter/reduce - o(n)
+-sort o(n log n)
