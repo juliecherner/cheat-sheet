@@ -1,0 +1,93 @@
+- Frequency counter/ hashmap
+
+const getHashmap = (string) => {
+  const hashMap = {};
+  for (const letter of string) {
+    hashMap[letter] = ++hashMap[letter] || 1;
+  }
+
+  return hashMap;
+};
+
+- Multiple pointers (for sorted arrays)
+    - sum of 2 equals N
+
+    sumZero(array){
+        const firstPointer = 0;
+        const secondPointer = array.length - 1;
+        while (firstPointer < secondPointer){
+            let sum = array[firstPointer] + array[secondPointer];
+            if (sum === 0) {
+                return array[firstPointer] + array[secondPointer]
+            } else if (sum < 0){
+                firstPointer++;
+            } else {
+                secondPointer--;
+            }
+
+        }
+    }
+
+    - for unique values (sorted array)
+
+        function countUniqueValues(array) {
+        if (array.length === 0) return 0;
+
+        let startPointer = 0;
+
+        for (let endPointer = 1; endPointer < array.length; endPointer++) {
+            if (array[startPointer] !== array[endPointer]) {
+            startPointer++;
+            array[startPointer] = array[endPointer];
+            }
+        }
+
+        return startPointer + 1;
+        }
+
+- Sliding window
+
+//max sum of 3 digits
+function maxSubArray(array, num){
+
+    if (array.length < num) return 0;
+    let maxSum = 0;
+    let tempSum = 0;
+
+    //first 3 digits
+    for (const i of num) {
+        maxSum += array[num]
+    }
+
+    tempSum = maxSum;
+
+    for (let i = num; i < array.length; i++) {
+        tempSum += tempSum + array[i] - array[i - num];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+
+    return maxSum;
+}
+
+- Divide and conquer / Binary search - log(n)
+
+function search(array, val){
+    let min = 0;
+    let max = array.length - 1;
+
+    while (min <= max) {
+        let middle = Math.floor((min + max)/2);
+        let currentElement = array[middle];
+
+        if (currentElement < val){
+            min = middle + 1;
+        } else if(currentElement < val) {
+            max = middle + 1;
+        } else {
+            return middle;
+        }
+    }
+
+    return -1;
+
+}
