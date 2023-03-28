@@ -130,3 +130,37 @@ function quickSortRecursive(arr, start, end) {
   quickSortRecursive(arr, start, index - 1);
   quickSortRecursive(arr, index + 1, end);
 }
+
+// radix sort - non comparison sort that works on buckets //preferable for numbers - only 10 buckets
+// complexity - O(nk) / O(n log n) can be met as well
+
+function getDigit(num, place) {
+  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10
+}
+
+function digitCount(num) {
+  if (num === 0) return 1
+  return Math.floor(Math.log10(Math.abs(num))) + 1
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]))
+  }
+  return maxDigits
+}
+
+function radixSort(arrOfNums) {
+  let maxDigitCount = mostDigits(arrOfNums)
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => []) // [[], [], [],...]
+    for (let i = 0; i < arrOfNums.length; i++) {
+      let digit = getDigit(arrOfNums[i], k)
+      digitBuckets[digit].push(arrOfNums[i])
+    }
+    // New order after each loop
+    arrOfNums = [].concat(...digitBuckets)
+  }
+  return arrOfNums
+}
